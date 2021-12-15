@@ -26,7 +26,7 @@ const ExprInput: React.FC<ExprInputProps> = ({ parser }) => {
             });
         }}
       />
-      <h3>{error ? error : strRes}</h3>
+      <h3>Result: {error ? error : strRes}</h3>
     </div>
   );
 };

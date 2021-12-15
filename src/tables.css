@@ -1,0 +1,35 @@
+table {
+  border-collapse: collapse;
+  border: 3px solid gray;
+}
+
+td {
+  border: 3px solid gray;
+  padding: 5px;
+}
+tr:last-child td {
+  padding: 0;
+}
+
+tr:last-child td input {
+  border: 1px solid gray;
+  padding: 4px;
+}
+
+.add-new-btn {
+  font-weight: bold;
+  padding: 4px;
+  background-color: darkgray;
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.add-new-btn:hover {
+  background-color: gray;
+  color: white;
+}
+
+.del-cell {
+  float: right;
+  cursor: pointer;
+}
