@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/arithmetiny-demo/static/css/main.9a7e3e55.css",
-    "main.js": "/arithmetiny-demo/static/js/main.526e3009.js",
+    "main.css": "/arithmetiny-demo/static/css/main.3826a794.css",
+    "main.js": "/arithmetiny-demo/static/js/main.8a76fbb4.js",
     "index.html": "/arithmetiny-demo/index.html",
-    "main.9a7e3e55.css.map": "/arithmetiny-demo/static/css/main.9a7e3e55.css.map",
-    "main.526e3009.js.map": "/arithmetiny-demo/static/js/main.526e3009.js.map"
+    "main.3826a794.css.map": "/arithmetiny-demo/static/css/main.3826a794.css.map",
+    "main.8a76fbb4.js.map": "/arithmetiny-demo/static/js/main.8a76fbb4.js.map"
   },
   "entrypoints": [
-    "static/css/main.9a7e3e55.css",
-    "static/js/main.526e3009.js"
+    "static/css/main.3826a794.css",
+    "static/js/main.8a76fbb4.js"
   ]
 }

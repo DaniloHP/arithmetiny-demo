@@ -14,9 +14,9 @@ const ExprInput: React.FC<ExprInputProps> = ({ parser }) => {
       <h2>Enter an expression below</h2>
       <input
         type={"text"}
-        onInput={(event) => {
+        onInput={({ currentTarget: { value } }) => {
           parser
-            .evaluate(event.currentTarget.value)
+            .evaluate(value)
             .then((res) => {
               setResult(res);
               setError("");

@@ -1,5 +1,5 @@
 {
-  "name": "deleteme",
+  "name": "airthmetiny-demo",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://danilohp.github.io/arithmetiny-demo/",
@@ -20,7 +20,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && mv build docs",
+    "deploy": "gh-pages -d docs",
+    "build": "react-scripts build && rimraf docs && mv build docs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -43,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "prettier": "^2.5.1"
   }
 }

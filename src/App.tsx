@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import {
   Arithmetiny,
   BUILTIN_FUNCTIONS,
   BUILTIN_VARS,
-  Context,
   FnPair,
   VarPair,
 } from "arithmetiny";
@@ -19,7 +18,7 @@ export interface TableProps<T> {
 
 const parser = new Arithmetiny();
 
-function App() {
+const App: FC = () => {
   const [vars, setVars] = useState<VarPair[]>(BUILTIN_VARS);
   const [functions, setFunctions] = useState<FnPair[]>(BUILTIN_FUNCTIONS);
   parser.setContext({ vars, functions });
@@ -27,11 +26,13 @@ function App() {
     <main className="app">
       <div className={"row"}>
         <ExprInput parser={parser} />
-        <VarTable update={setVars} curr={vars} />
-        <FunctionTable update={setFunctions} curr={functions} />
+        <div className={"tables"}>
+          <VarTable update={setVars} curr={vars} />
+          <FunctionTable update={setFunctions} curr={functions} />
+        </div>
       </div>
     </main>
   );
-}
+};
 
 export default App;

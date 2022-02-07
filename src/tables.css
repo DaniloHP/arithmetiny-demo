@@ -1,4 +1,24 @@
+.tables {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.table-container {
+  width: 75%;
+  margin-bottom: 2em;
+}
+
+@media screen and (max-width: 600px) {
+  .table-container {
+    width: 100%;
+  }
+}
+
 table {
+  width: 100%;
+  height: min-content;
   border-collapse: collapse;
   border: 3px solid gray;
 }
@@ -7,6 +27,7 @@ td {
   border: 3px solid gray;
   padding: 5px;
 }
+
 tr:last-child td {
   padding: 0;
 }
@@ -19,17 +40,54 @@ tr:last-child td input {
 .add-new-btn {
   font-weight: bold;
   padding: 4px;
-  background-color: darkgray;
+  color: white;
+  background-color: rgb(16, 67, 171);
   transition: 100ms;
   cursor: pointer;
 }
 
 .add-new-btn:hover {
-  background-color: gray;
+  background-color: rgb(44, 112, 253);
   color: white;
+}
+
+.form-error {
+  font-weight: bold;
+  color: #c71111;
 }
 
 .del-cell {
   float: right;
   cursor: pointer;
+}
+
+.last-row {
+  background-color: white;
+}
+
+.last-row .editable {
+  padding: 0.3em;
+}
+
+.submit-cell {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-cell .editable,
+.submit-cell select {
+  flex-grow: 1;
+}
+
+select {
+  border-radius: 0;
+}
+
+.args-header {
+  width: 1em;
+}
+
+.args-cell {
+  text-align: right;
+  width: 1em;
 }

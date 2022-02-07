@@ -1,27 +1,27 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, FC } from "react";
 import { BUILTIN_VARS, IDENTIFIER_RE, VarPair } from "arithmetiny";
 import "./tables.css";
 import { TableProps } from "./App";
 
-const VarTable: React.FC<TableProps<VarPair>> = ({ curr, update }) => {
+const VarTable: FC<TableProps<VarPair>> = ({ curr, update }) => {
   const [error, setError] = useState("");
-  const nameRef = useRef<HTMLInputElement>(null);
-  const valRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLDivElement>(null);
+  const valRef = useRef<HTMLDivElement>(null);
   const numBuiltin = BUILTIN_VARS.length;
   const handleDelete = (ownName: string) => {
     curr && update(curr.filter(({ name }) => name !== ownName));
   };
   const handleAdd = () => {
-    const name = nameRef.current?.value;
-    const value = valRef.current?.value;
-    if (!curr || !name || !value) {
+    const name = nameRef.current?.innerText?.trim();
+    const value = valRef.current?.innerText?.trim();
+    if (!curr || !nameRef.current || !valRef.current || !name || !value) {
       setError("Some fields not filled in");
       return;
     }
     const names = curr.map(({ name }) => name);
     if (!IDENTIFIER_RE.test(name)) {
       setError(
-        "Name is invalid. This might be because it starts with a number or contains spaces or dashes"
+        "Name is invalid. This might be because it starts with a number or contains spaces or dashes."
       );
     } else if (names.includes(name)) {
       setError("Name is already taken");
@@ -30,10 +30,11 @@ const VarTable: React.FC<TableProps<VarPair>> = ({ curr, update }) => {
     } else {
       setError("");
       update(curr.concat({ name, value: +value }));
+      nameRef.current.innerText = valRef.current.innerText = "";
     }
   };
   return (
-    <>
+    <div className={"table-container"}>
       <table className={"value-table"}>
         <thead>
           <tr>
@@ -59,12 +60,12 @@ const VarTable: React.FC<TableProps<VarPair>> = ({ curr, update }) => {
                 <td className={"value-cell"}>{value}</td>
               </tr>
             ))}
-          <tr>
-            <td className={""}>
-              <input type={"text"} ref={nameRef} />
+          <tr className={"last-row"}>
+            <td>
+              <div contentEditable className={"editable"} ref={nameRef} />
             </td>
-            <td className={""}>
-              <input type={"text"} ref={valRef} />
+            <td className={"submit-cell"}>
+              <div contentEditable ref={valRef} className={"editable"} />
               <span className={"add-new-btn"} onClick={handleAdd}>
                 Add new
               </span>
@@ -73,7 +74,7 @@ const VarTable: React.FC<TableProps<VarPair>> = ({ curr, update }) => {
         </tbody>
       </table>
       <span className={"form-error"}>{error}</span>
-    </>
+    </div>
   );
 };
 
